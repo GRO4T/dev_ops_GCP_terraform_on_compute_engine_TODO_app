@@ -5,7 +5,7 @@ The goal of the project is to create an application with a functionality to crea
 * Docker (https://www.docker.com/)
 * FastAPI web framework (https://fastapi.tiangolo.com/) 
 * HTML + Javascript (for practice)
-* SQLite
+* SQLite with SQLAlchemy
 * frontend served using simple HTTP server written in NodeJS
 * Jenkins CI/CD
 
@@ -46,3 +46,12 @@ https://stackoverflow.com/questions/39525820/docker-port-forwarding-not-working
 ## Resources
 https://docs.docker.com/engine/install/ubuntu/
 https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module
+https://fastapi.tiangolo.com/tutorial/sql-databases/
+
+## Potential TODOs
+https://fastapi.tiangolo.com/tutorial/sql-databases/
+* secure passwords
+* Alembic - migration tool for SQLAlchemy
+
+## Worth to read later
+https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/
