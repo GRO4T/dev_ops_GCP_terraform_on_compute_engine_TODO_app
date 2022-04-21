@@ -4,9 +4,10 @@ The goal of the project is to create an application with a functionality to crea
 ## Tech Stack
 * Docker (https://www.docker.com/)
 * FastAPI web framework (https://fastapi.tiangolo.com/) 
-* HTML + Javascript
+* HTML + Javascript (for practice)
 * SQLite
-* Node.js - for serving HTML :)
+* frontend served using simple HTTP server written in NodeJS
+* Jenkins CI/CD
 
 ## Dependencies
 ### Docker
