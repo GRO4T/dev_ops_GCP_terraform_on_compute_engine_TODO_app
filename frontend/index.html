@@ -1,1 +1,30 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      	function createUser() {
+            const url = "http://localhost:8001/users";
+            const payload = {
+			    email: "test@email.com",
+			    password: "secret123"
+            };
+			$.post({
+                url: url,
+                data: JSON.stringify(payload),
+                contentType: "application/json; charset=utf-8"
+            }).done(function(data, status) {
+                if (status !== 200) {
+                    console.log("Error creating user: code=${status}");
+                }
+			});
+		}
+  
+    </script>
+</head>
+<body>
+    <button id="createUserButton" type="button" onclick="createUser()">Create User</button>
+    <button type="button">Read Users</button>
+</body>
+

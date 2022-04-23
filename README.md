@@ -40,8 +40,16 @@ docker exec -it <container_name> /bin/bash
 ```
 
 ## Problems
+### Cannot access frontend
 index.html was not visible from host. Server was hosting on 127.0.0.1 which meant that it was not forwarded outside of container. Solution was to change the address to 0.0.0.0.
 https://stackoverflow.com/questions/39525820/docker-port-forwarding-not-working
+### CORS
+https://fastapi.tiangolo.com/tutorial/cors/
+### JQuery POST JSON
+1. Set content type to application/json
+https://stackoverflow.com/questions/2845459/jquery-how-to-make-post-use-contenttype-application-json
+2. Stringify JSON
+https://stackoverflow.com/questions/5570747/jquery-posting-json
 
 ## Resources
 https://docs.docker.com/engine/install/ubuntu/
