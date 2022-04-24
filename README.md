@@ -50,11 +50,18 @@ https://fastapi.tiangolo.com/tutorial/cors/
 https://stackoverflow.com/questions/2845459/jquery-how-to-make-post-use-contenttype-application-json
 2. Stringify JSON
 https://stackoverflow.com/questions/5570747/jquery-posting-json
+### Form submit clearing logs
+site is not reloaded when onsubmit function returns false
+https://stackoverflow.com/questions/25346143/why-does-calling-a-js-function-from-onsubmit-clear-my-form-and-console
+### HTTP 422 Unprocessable Entity
+Happens when endpoint doesn't return any status code
 
 ## Resources
 https://docs.docker.com/engine/install/ubuntu/
 https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module
 https://fastapi.tiangolo.com/tutorial/sql-databases/
+https://www.twilio.com/blog/2017/09/everything-you-ever-wanted-to-know-about-secure.html-forms.html
+https://fastapi.tiangolo.com/tutorial/request-forms/
 
 ## Potential TODOs
 https://fastapi.tiangolo.com/tutorial/sql-databases/

@@ -1,5 +1,5 @@
 from typing import Optional
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
@@ -38,11 +38,11 @@ def read_root():
 
 
 @app.post("/users/", response_model=schemas.User)
-def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    db_user = crud.get_user_by_email(db, email=user.email)
+async def create_user_from_form_data(db: Session = Depends(get_db), email: str = Form(...), password: str = Form(...)):
+    db_user = crud.get_user_by_email(db, email=email)
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
-    return crud.create_user(db=db, user=user)
+    return crud.create_user(db=db, user=schemas.UserCreate(email=email, password=password))
 
 
 @app.get("/users/", response_model=list[schemas.User])
