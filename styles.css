@@ -3,25 +3,25 @@ html {
 }
 
 fieldset {
-    background: cyan;
-    border: 5px solid blue;
+  background: cyan;
+  border: 5px solid blue;
 }
-  
+
 legend {
-    padding: 10px;
-    background: blue;
-    color: cyan;
+  padding: 10px;
+  background: blue;
+  color: cyan;
 }
 
 button {
-    background: blue;
-    color: cyan;
+  background: blue;
+  color: cyan;
 }
 
 table {
-    width: 50%;
+  width: 50%;
 }
 
 form {
-    display: inline-block;
+  display: inline-block;
 }

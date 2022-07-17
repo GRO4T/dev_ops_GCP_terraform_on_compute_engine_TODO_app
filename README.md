@@ -11,7 +11,7 @@ https://sonarcloud.io/project/overview?id=GRO4T_todo-list
 ## Tech Stack
 * PHP, HTML, CSS
 * Super Linter https://github.com/marketplace/actions/super-linter
-* Github Actions
+* GitHub Actions
 * Terraform on Google Cloud
 * Google Cloud Compute Engine
 * Google Cloud Operations (formerly Stackdriver)
