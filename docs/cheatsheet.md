@@ -11,3 +11,7 @@ echo '<pre>';
 var_dump($jsonArray);
 echo '</pre>';
 ```
+### run PHP code beautifier
+```
+phpcbf
+```

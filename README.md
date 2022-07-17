@@ -16,3 +16,4 @@ https://sonarcloud.io/project/overview?id=GRO4T_todo-list
 * Google Cloud Compute Engine
 * Google Cloud Operations (formerly Stackdriver)
 * Python Selenium
+* PHP Code Sniffer
