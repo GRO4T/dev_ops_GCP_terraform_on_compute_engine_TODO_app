@@ -1,0 +1,27 @@
+html {
+  font-family: sans-serif;
+}
+
+fieldset {
+    background: cyan;
+    border: 5px solid blue;
+}
+  
+legend {
+    padding: 10px;
+    background: blue;
+    color: cyan;
+}
+
+button {
+    background: blue;
+    color: cyan;
+}
+
+table {
+    width: 50%;
+}
+
+form {
+    display: inline-block;
+}
