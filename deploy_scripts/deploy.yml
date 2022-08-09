@@ -1,0 +1,9 @@
+---
+# TODO copy ssh keys if current_host is local_vm
+- name: This sets up an httpd webserver
+  hosts: "{{ current_host }}"
+  tasks:
+  - name: Install apache packages 
+    yum:
+      name: httpd
+      state: presensh 
