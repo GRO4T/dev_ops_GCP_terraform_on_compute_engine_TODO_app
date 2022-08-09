@@ -60,7 +60,9 @@ if (file_exists('todo.json')) {
                     <td>
                         <form action="change_status.php" method="post">
                             <input type="hidden" name="todo_name" value="<?php echo $todoName ?>">
-                            <input type="checkbox" onChange="this.form.submit()" <?php echo $todo['completed'] ? 'checked' : '' ?>>
+                            <input type="checkbox"
+                                   onChange="this.form.submit()"
+                                   <?php echo $todo['completed'] ? 'checked' : '' ?>>
                         </form>
                         <?php echo $todoName ?>
                     </td>
