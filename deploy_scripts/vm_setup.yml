@@ -1,0 +1,38 @@
+---
+- name: This sets up an httpd webserver
+  hosts: local_vm
+  tasks:
+  - name: Install httpd (apache)
+    yum:
+      name: httpd
+      state: latest
+    register: httpd_installation
+  - name: Enable httpd (start on boot)
+    service:
+      name: httpd
+      enabled: yes
+  - name: Copy test index.html to /var/www/html
+    copy:
+      content: "Hello World\n"
+      dest: /var/www/html/index.html
+    register: index_html
+  - name: Restart httpd
+    service:
+      name: httpd
+      state: restarted
+    when: httpd_installation.changed or index_html.changed
+  - name: Set firewall zone to 'FedoraServer' on machines running Fedora
+    set_fact:
+      firewall_zone: FedoraServer
+    when: ansible_distribution == 'Fedora'
+  - name: Distribution
+    debug: msg="{{ firewall_zone }}"
+  - name: Add HTTP traffic to firewall
+    firewalld:
+      zone: "{{ firewall_zone }}"
+      service: http
+      permanent: yes
+      immediate: yes
+      state: enabled
+  
+  
