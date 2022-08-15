@@ -1,0 +1,19 @@
+---
+- name: Deploys static HTML website to a VM
+  hosts: local_vm
+  tasks:
+  - name: Check server availability
+    ping:
+  - name: Copy website sources
+    synchronize:
+      src: ../html/
+      dest: "{{ ansible_user }}@{{ ansible_host }}:/var/www/html/"
+      dest_port: "{{ ansible_ssh_port }}"
+      archive: yes
+      delete: yes
+    register: website_sources 
+  - name: Restart httpd
+    service:
+      name: httpd
+      state: restarted
+    when: website_sources.changed
