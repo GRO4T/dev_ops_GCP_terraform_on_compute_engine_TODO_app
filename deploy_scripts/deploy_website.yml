@@ -12,6 +12,22 @@
       archive: yes
       delete: yes
     register: website_sources 
+  - name: Copy database file
+    synchronize:
+      src: ../todo.json
+      dest: "{{ ansible_user }}@{{ ansible_host }}:/var/www/html/todo.json"
+      dest_port: "{{ ansible_ssh_port }}"
+    register: json_database
+  - name: Allow apache to modify /var/www/html/todo.json
+    community.general.sefcontext:
+      target: /var/www/html/todo.json 
+      setype: httpd_sys_rw_content_t
+      state: present
+    register: httpd_sefcontext
+    when: json_database.changed
+  - name: Apply new SELinux file context to filesystem
+    ansible.builtin.command: restorecon -v /var/www/html/todo.json
+    when: httpd_sefcontext.changed
   - name: Restart httpd
     service:
       name: httpd

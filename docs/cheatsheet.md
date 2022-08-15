@@ -15,3 +15,8 @@ echo '</pre>';
 ```
 phpcbf
 ```
+### PHP error_log function
+```
+error_log("Some error message");
+```
+Logs can be found in /var/log/php-fpm/www-error.log
