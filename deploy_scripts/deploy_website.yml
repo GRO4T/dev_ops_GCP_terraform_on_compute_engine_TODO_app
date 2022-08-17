@@ -10,8 +10,7 @@
       dest: "{{ ansible_user }}@{{ ansible_host }}:/var/www/html/"
       dest_port: "{{ ansible_ssh_port }}"
       archive: yes
-      delete: yes
-    register: website_sources 
+    register: website_sources_changes
   - name: Copy database file
     synchronize:
       src: ../todo.json
@@ -26,10 +25,10 @@
     register: httpd_sefcontext
     when: json_database.changed
   - name: Apply new SELinux file context to filesystem
-    ansible.builtin.command: restorecon -v /var/www/html/todo.json
+    ansible.builtin.command: restorecon -irv /var/www/html/
     when: httpd_sefcontext.changed
   - name: Restart httpd
     service:
       name: httpd
       state: restarted
-    when: website_sources.changed
+    when: "'php' in website_sources_changes.msg or 'css' in website_sources_changes.msg"
