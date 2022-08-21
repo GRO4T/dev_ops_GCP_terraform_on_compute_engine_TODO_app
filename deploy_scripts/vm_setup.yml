@@ -1,40 +1,53 @@
 ---
-- name: Configures a VM to host a static HTML website
-  hosts: local_vm
+- name: Configure a VM to host a static HTML website
+  hosts: "{{ apache_server }}"
   tasks:
+
   - name: Check server availability
     ping:
+
+  - name: Fail if distribution is not supported
+    fail:
+      msg: "Distribution {{ ansible_distribution }} not supported"
+    when: "ansible_distribution not in ('Fedora', 'Debian')"
+
   - name: Install packages
-    yum:
+    package:
       name:
-        - httpd
+        - "{{ apache_package }}"
         - php
       state: latest
     register: httpd_installation
+
   - name: Enable httpd (start on boot)
     service:
       name: httpd
       enabled: yes
+
   - name: Change permissions to '775' for /var/www/html/ directory
     file:
       path: /var/www/html/
       recurse: yes
       mode: '775'
+
   - name: Copy httpd configuration
     synchronize:
       src: httpd.conf
       dest: "{{ ansible_user }}@{{ ansible_host }}:/etc/httpd/conf/httpd.conf"
       dest_port: "{{ ansible_ssh_port }}"
     register: httpd_configuration
+
   - name: Restart httpd
     service:
       name: httpd
       state: restarted
     when: httpd_installation.changed or httpd_configuration.changed
+
   - name: Set firewall zone to 'FedoraServer' on machines running Fedora
     set_fact:
       firewall_zone: FedoraServer
     when: ansible_distribution == 'Fedora'
+
   - name: Add HTTP traffic to firewall
     firewalld:
       zone: "{{ firewall_zone }}"
