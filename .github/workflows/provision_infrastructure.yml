@@ -1,4 +1,4 @@
-name: 'Infrastructure provisioning'
+name: 'Provision infrastructure'
 
 on:
   workflow_run:

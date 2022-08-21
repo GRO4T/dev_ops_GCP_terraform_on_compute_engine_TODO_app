@@ -31,13 +31,13 @@
 
   - name: Modify SELinux context to allow apache to modify /var/www/html/todo.json on machines running Fedora
     community.general.sefcontext:
-      target: /var/www/html/todo.json 
+      target: /var/www/html/todo.json
       setype: httpd_sys_rw_content_t
       state: present
     register: httpd_sefcontext
     when: json_database.changed
 
-  - name: Apply new SELinux file context to filesystem on machines running Fedora 
+  - name: Apply new SELinux file context to filesystem on machines running Fedora
     ansible.builtin.command: restorecon -irv /var/www/html/
     when: httpd_sefcontext.changed and ansible_distribution == 'Fedora'
 
