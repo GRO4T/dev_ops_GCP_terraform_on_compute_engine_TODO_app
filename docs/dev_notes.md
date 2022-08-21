@@ -21,7 +21,7 @@ error_log("Some error message");
 ```
 Logs can be found in /var/log/php-fpm/www-error.log
 
-## Github Actions
+## GitHub Actions
 ### Set up service account credentials
 * Log in into Google Cloud. Go into IAM > Service Accounts.
 * Pick 'Compute Engine default service account'.
@@ -37,3 +37,9 @@ sed -i 's/\n/ /' service_account_key.json
 ## Terraform
 ### Allow HTTP(S)
 Use 'http-server' network tag
+
+## Super Linter
+Run locally
+```
+docker run -it --entrypoint /bin/bash github/super-linter
+```
