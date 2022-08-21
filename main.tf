@@ -13,6 +13,10 @@ resource "google_compute_instance" "todo-list-vm" {
 
   network_interface {
     network = "default"
+    
+    access_config {
+      # Include this section to give the VM an external IP address
+    }
   }
 
   metadata_startup_script = <<SCRIPT
