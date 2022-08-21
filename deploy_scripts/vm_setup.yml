@@ -18,12 +18,17 @@
     register: apache_installation
     become: yes
 
+  - name: Install PHP
+    package:
+      name: "{{ php_package }}"
+      state: present
+    become: yes
+
   - name: Install additional packages
     package:
       name:
-        - php-8.1.9
-        - rsync-3.2.5
-      state: present
+        - rsync
+      state: latest
     become: yes
 
   - name: Enable apache service (start on boot)
@@ -52,15 +57,11 @@
       state: restarted
     when: apache_installation.changed or httpd_configuration.changed
 
-  - name: Set firewall zone to 'FedoraServer' on machines running Fedora
-    set_fact:
-      firewall_zone: FedoraServer
-    when: ansible_distribution == 'Fedora'
-
-  - name: Add HTTP traffic to firewall
+  - name: Add HTTP traffic to firewall on machines running Fedora
     firewalld:
-      zone: "{{ firewall_zone }}"
+      zone: "FedoraServer"
       service: http
       permanent: yes
       immediate: yes
       state: enabled
+    when: ansible_distribution == 'Fedora'
