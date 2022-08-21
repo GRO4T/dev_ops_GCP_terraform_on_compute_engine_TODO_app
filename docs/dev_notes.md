@@ -41,5 +41,6 @@ Use 'http-server' network tag
 ## Super Linter
 Run locally
 ```
-docker run -it --entrypoint /bin/bash github/super-linter
+docker run -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v /home/damiankolaska/Desktop/todo-list/README.md:/tmp/lint/README.md github/super-linter^C
 ```
+https://github.com/github/super-linter/issues/2712
