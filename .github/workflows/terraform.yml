@@ -1,6 +1,11 @@
-name: 'Terraform'
+name: 'Infrastructure provisioning'
 
 on:
+  workflow_run:
+    workflows: ["Static analysis"]
+    branches: [master]
+    types:
+      - completed
   push:
     branches:
     - "master"
