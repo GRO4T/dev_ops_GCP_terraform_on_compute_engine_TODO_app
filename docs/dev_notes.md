@@ -33,3 +33,7 @@ sed -i 's/\n/ /' service_account_key.json
 * Go to GitHub repository > Settings > Secrets > Actions.
 * Create new repository secret named GOOGLE_CREDENTIALS.
 * As the value paste previously downloaded service account key.
+
+## Terraform
+### Allow HTTP(S)
+Use 'http-server' network tag
