@@ -13,13 +13,15 @@
       dest_port: "{{ ansible_ssh_port }}"
       archive: yes
     register: website_sources_changes
+    become: yes
 
   - name: Copy database file
     synchronize:
       src: ../todo.json
-      dest: "{{ ansible_user }}@{{ ansible_host }}:/var/www/html/todo.json"
+      dest: "/var/www/html/todo.json"
       dest_port: "{{ ansible_ssh_port }}"
     register: json_database
+    become: yes
 
   - name: Add write permissions to todo.json file
     file:
