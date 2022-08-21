@@ -11,16 +11,22 @@
       msg: "Distribution {{ ansible_distribution }} not supported"
     when: "ansible_distribution not in ('Fedora', 'Debian')"
 
-  - name: Install packages
+  - name: Install apache
     package:
-      name:
-        - "{{ apache_package }}"
-        - php
-      state: latest
-    register: httpd_installation
+      name: "{{ apache_package }}"
+      state: present
+    register: apache_installation
     become: yes
 
-  - name: Enable httpd (start on boot)
+  - name: Install additional packages
+    package:
+      name:
+        - php-8.1.9
+        - rsync-3.2.5
+      state: present
+    become: yes
+
+  - name: Enable apache service (start on boot)
     service:
       name: "{{ apache_service }}"
       enabled: yes
@@ -30,19 +36,21 @@
       path: /var/www/html/
       recurse: yes
       mode: '775'
+    become: yes
 
-  - name: Copy httpd configuration
-    synchronize:
-      src: httpd.conf
-      dest: "{{ ansible_user }}@{{ ansible_host }}:/etc/httpd/conf/httpd.conf"
-      dest_port: "{{ ansible_ssh_port }}"
+  - name: Change httpd main index from index.html to index.php
+    replace:
+      path: "/etc/httpd/httpd.conf"
+      regexp: "DirectoryIndex index.html"
+      replace: "DirectoryIndex index.php"
+    when: "apache_service == 'http'"
     register: httpd_configuration
 
-  - name: Restart httpd
+  - name: Restart apache service
     service:
-      name: httpd
+      name: "{{ apache_service }}"
       state: restarted
-    when: httpd_installation.changed or httpd_configuration.changed
+    when: apache_installation.changed or httpd_configuration.changed
 
   - name: Set firewall zone to 'FedoraServer' on machines running Fedora
     set_fact:

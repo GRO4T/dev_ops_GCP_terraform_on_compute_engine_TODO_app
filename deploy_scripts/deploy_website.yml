@@ -1,6 +1,6 @@
 ---
 - name: Deploys static HTML website to a VM
-  hosts: local_vm
+  hosts: "{{ apache_server }}"
   tasks:
   - name: Check server availability
     ping:
