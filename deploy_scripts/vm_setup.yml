@@ -18,10 +18,11 @@
         - php
       state: latest
     register: httpd_installation
+    become: yes
 
   - name: Enable httpd (start on boot)
     service:
-      name: httpd
+      name: "{{ apache_service }}"
       enabled: yes
 
   - name: Change permissions to '775' for /var/www/html/ directory
