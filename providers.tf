@@ -1,4 +1,4 @@
 provider "google" {
-  project     = "sandbox-351818"
-  region      = "us-central1"
+  project = "sandbox-351818"
+  region  = "us-central1"
 }
