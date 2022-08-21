@@ -9,7 +9,7 @@
   - name: Copy website sources
     synchronize:
       src: ../html/
-      dest: "{{ ansible_user }}@{{ ansible_host }}:/var/www/html/"
+      dest: "/var/www/html/"
       dest_port: "{{ ansible_ssh_port }}"
       archive: yes
     register: website_sources_changes
@@ -20,6 +20,12 @@
       dest: "{{ ansible_user }}@{{ ansible_host }}:/var/www/html/todo.json"
       dest_port: "{{ ansible_ssh_port }}"
     register: json_database
+
+  - name: Add write permissions to todo.json file
+    file:
+      path: /var/www/html/todo.json
+      mode: '666'
+    become: yes
 
   - name: Modify SELinux context to allow apache to modify /var/www/html/todo.json on machines running Fedora
     community.general.sefcontext:
