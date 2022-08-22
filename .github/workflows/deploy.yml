@@ -43,4 +43,4 @@ jobs:
     - name: Check GCE instance connectivity
       working-directory: ./ansible
       run: |-
-        ansible remote_gcp_debian_vm -m ping
+        ansible remote_gcp_debian_vm -m ping -vvvv
