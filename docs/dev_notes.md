@@ -41,6 +41,15 @@ Use 'http-server' network tag
 ## Super Linter
 Run locally
 ```
-docker run -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v /home/damiankolaska/Desktop/todo-list/README.md:/tmp/lint/README.md github/super-linter^C
+docker run -e RUN_LOCAL=true -e USE_FIND_ALGORITHM=true -v /home/damiankolaska/Desktop/todo-list/README.md:/tmp/lint/README.md github/super-linter
 ```
 https://github.com/github/super-linter/issues/2712
+
+## Ansible
+### How to run a playbook against Google Compute Engine instance
+https://stackoverflow.com/questions/60224258/how-to-use-ansible-to-execute-shell-script-against-gce-instances
+Configure ssh keys
+```
+gcloud compute config-ssh
+```
+GCE instance hostname: [INSTANCE_NAME].[ZONE].[PROJECT_ID]

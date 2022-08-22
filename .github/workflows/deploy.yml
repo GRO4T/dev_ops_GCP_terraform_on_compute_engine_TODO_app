@@ -1,0 +1,46 @@
+---
+name: 'Deploy to Google Compute Engine'
+
+on:
+  workflow_run:
+    workflows: ["Provision infrastructure"]
+    branches: [master]
+    types:
+      - completed
+
+env:
+  PROJECT_ID: sandbox-351818
+  GCE_INSTANCE: todo-list-instance
+  GCE_INSTANCE_ZONE: us-central1-a
+
+jobs:
+  deploy_to_gce:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+
+    # Setup gcloud CLI
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0
+
+    - name: Setup SSH keys
+      run: |-
+        gcloud compute config-ssh
+
+    - name: Check GCE instance connectivity
+      working-directory: ./ansible
+      run: |-
+        ansible remote_gcp_debian_vm -m ping

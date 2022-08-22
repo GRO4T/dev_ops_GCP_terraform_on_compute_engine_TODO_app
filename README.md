@@ -21,6 +21,10 @@ The goal was to keep things simple.
 ## TODO
 Now
 * add precommit action that runs 'terraform fmt'
-* figure out why remote Terraform state has no resources
 * app deployment using ansible playbook
 * precommit action that runs super linter?
+* write article on Medium on how to use GitHub actions, with GCE and ansible
+
+## Resources
+Google Compute Engine GitHub Actions example
+<https://github.com/google-github-actions/setup-gcloud/blob/main/example-workflows/gce/.github/workflows/gce.yaml/>
