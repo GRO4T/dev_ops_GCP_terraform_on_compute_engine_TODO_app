@@ -12,7 +12,7 @@ env:
   PROJECT_ID: sandbox-351818
   GCE_INSTANCE: todo-list-instance
   GCE_INSTANCE_ZONE: us-central1-a
-  GCP_USER: "{{ secrets.GCP_USER }}"
+  GCP_USER: "${{ secrets.GCP_USER }}"
 
 jobs:
   deploy_to_gce:
