@@ -40,5 +40,5 @@ jobs:
     - name: Setup SSH keys
       run: |-
         gcloud compute config-ssh
-        ssh todo-list-instance.us-central1-a.sandbox-351818 "echo test"
+        ssh -vvvv todo-list-instance.us-central1-a.sandbox-351818 "echo test"
         ansible remote_gcp_debian_vm -m ping -vvvv
