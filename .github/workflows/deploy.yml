@@ -41,7 +41,7 @@ jobs:
         gcloud compute config-ssh
 
     - name: Test SSH
-      run: ssh todo-list-instance.us-central1-a.sandbox-351818
+      run: ssh todo-list-instance.us-central1-a.sandbox-351818 "echo test"
 
     - name: Check GCE instance connectivity
       working-directory: ./ansible
