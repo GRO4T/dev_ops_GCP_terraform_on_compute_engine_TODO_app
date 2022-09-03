@@ -43,6 +43,10 @@ jobs:
     - name: Verify SSH host
       run: ssh -o StrictHostKeyChecking=no todo-list-instance.us-central1-a.sandbox-351818 "echo 'Verify host'"
 
-    - name: Setup the VM using the ansible playbook
+    - name: Setup the VM using ansible
       working-directory: ./ansible
-      run: ansible remote_gcp_debian_vm -m ping
+      run: ansible remote_gcp_debian_vm vm_setup.yml
+
+    - name: Deploy solotion using ansible 
+      working-directory: ./ansible
+      run: ansible remote_gcp_debian_vm deploy_website.yml
