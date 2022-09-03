@@ -44,6 +44,5 @@ jobs:
       run: ssh -o StrictHostKeyChecking=no todo-list-instance.us-central1-a.sandbox-351818 "echo 'Verify host'"
 
     - name: Setup the VM using the ansible playbook
-      run: |
-        ls -lh
-        ansible remote_gcp_debian_vm -m ping
+      working-directory: ./ansible
+      run: ansible remote_gcp_debian_vm -m ping
