@@ -37,8 +37,11 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v0
 
-    - name: Setup SSH keys
-      run: |-
-        gcloud compute config-ssh
-        ssh -vvvv -o StrictHostKeyChecking=no todo-list-instance.us-central1-a.sandbox-351818 "echo test"
+    - name: Set up SSH keys
+      run: gcloud compute config-ssh
+
+    - name: Verify SSH host
+        ssh -o StrictHostKeyChecking=no todo-list-instance.us-central1-a.sandbox-351818 "echo 'Verify host'"
+
+    - name: Setup the VM using the ansible playbook
         ansible remote_gcp_debian_vm -m ping -vvvv
