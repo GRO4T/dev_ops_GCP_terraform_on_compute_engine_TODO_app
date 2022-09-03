@@ -41,7 +41,7 @@ jobs:
       run: gcloud compute config-ssh
 
     - name: Verify SSH host
-        ssh -o StrictHostKeyChecking=no todo-list-instance.us-central1-a.sandbox-351818 "echo 'Verify host'"
+      run: ssh -o StrictHostKeyChecking=no todo-list-instance.us-central1-a.sandbox-351818 "echo 'Verify host'"
 
     - name: Setup the VM using the ansible playbook
-        ansible remote_gcp_debian_vm -m ping -vvvv
+      run: ansible remote_gcp_debian_vm -m ping -vvvv
