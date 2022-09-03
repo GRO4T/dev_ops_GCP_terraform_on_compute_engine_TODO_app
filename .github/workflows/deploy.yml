@@ -45,8 +45,8 @@ jobs:
 
     - name: Setup the VM using ansible
       working-directory: ./ansible
-      run: ansible remote_gcp_debian_vm vm_setup.yml
+      run: ansible-playbook vm_setup.yml -e apache_server=remote_gcp_debian_vm
 
     - name: Deploy solotion using ansible 
       working-directory: ./ansible
-      run: ansible remote_gcp_debian_vm deploy_website.yml
+      run: ansible-playbook deploy_website.yml -e apache_server=remote_gcp_debian_vm
