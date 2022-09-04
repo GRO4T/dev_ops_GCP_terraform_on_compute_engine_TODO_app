@@ -21,7 +21,7 @@ Site available at <http://todolist.hopto.org/>
 3. Create GCE instance using Terraform.
 4. Copy runner SSH keys to GCE instance.
 5. Setup the VM using Ansible playbook.
-6. Deploy website using Ansible playbook.
+6. Deploy site using Ansible playbook.
 
 ## Resources
 Google Compute Engine GitHub Actions example
