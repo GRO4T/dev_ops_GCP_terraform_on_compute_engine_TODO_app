@@ -52,6 +52,11 @@
     when: "apache_service == 'http'"
     register: httpd_configuration
 
+  - name: Remove default index.html file
+    file:
+      path: /var/www/html/index.html
+      state: absent
+
   - name: Restart apache service
     service:
       name: "{{ apache_service }}"
