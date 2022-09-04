@@ -46,3 +46,4 @@
       name: "{{ apache_service }}"
       state: restarted
     when: "'php' in website_sources_changes.msg or 'css' in website_sources_changes.msg"
+    become: yes
