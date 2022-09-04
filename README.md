@@ -1,29 +1,30 @@
 # TODO List
-Simple TODO application written in PHP with data stored in JSON.
-The goal was to keep things simple.
-
-## SonarCloud project
-<https://sonarcloud.io/project/overview?id=GRO4T_todo-list/>
-
-## Super Linter Status Badge
-[![GitHub Super-Linter](https://github.com/GRO4T/todo-list/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+Simple TODO application written in PHP hosted on Google Cloud Compute Engine.
 
 ## Tech Stack
+### Application
 * PHP, HTML, CSS
-* Super Linter <https://github.com/marketplace/actions/super-linter/>
-* GitHub Actions
-* Terraform on Google Cloud
+### Infrastructure
 * Google Cloud Compute Engine
-* Google Cloud Operations (formerly Stackdriver)
-* Python Selenium
-* PHP Code Sniffer
+* Google Cloud Operations
+* DNS hosted on https://www.noip.com/
+### CI/CD
+* GitHub Actions
+* Ansible
+* Super Linter <https://github.com/marketplace/actions/super-linter/>
+* Terraform on Google Cloud
+
+## CI/CD pipeline steps
+1. Run Super Linter.
+2. Create GCE instance using Terraform.
+3. Copy runner SSH keys to GCE instance.
+4. Setup the VM using Ansible playbook.
+5. Deploy website using Ansible playbook.
 
 ## TODO
-Now
 * add precommit action that runs 'terraform fmt'
-* app deployment using ansible playbook
 * precommit action that runs super linter?
-* write article on Medium on how to use GitHub actions, with GCE and ansible
+* write article on Medium on setting up Github Runner to run ansible playbook against GCE instance
 
 ## Resources
 Google Compute Engine GitHub Actions example
