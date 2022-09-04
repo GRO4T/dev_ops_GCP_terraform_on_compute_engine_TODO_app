@@ -35,6 +35,7 @@
     service:
       name: "{{ apache_service }}"
       enabled: yes
+    become: yes
 
   - name: Change permissions to '775' for /var/www/html/ directory
     file:
