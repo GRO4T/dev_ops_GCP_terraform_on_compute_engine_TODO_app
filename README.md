@@ -1,5 +1,6 @@
 # TODO List
-Simple TODO application written in PHP hosted on Google Cloud Compute Engine.
+Simple TODO application written in PHP hosted on Google Cloud Compute Engine. <br>
+Site available at <http://todolist.hopto.org/>
 
 ## Tech Stack
 ### Application
@@ -15,16 +16,12 @@ Simple TODO application written in PHP hosted on Google Cloud Compute Engine.
 * Terraform on Google Cloud
 
 ## CI/CD pipeline steps
-1. Run Super Linter.
-2. Create GCE instance using Terraform.
-3. Copy runner SSH keys to GCE instance.
-4. Setup the VM using Ansible playbook.
-5. Deploy website using Ansible playbook.
-
-## TODO
-* add precommit action that runs 'terraform fmt'
-* precommit action that runs super linter?
-* write article on Medium on setting up Github Runner to run ansible playbook against GCE instance
+1. Run Super Linter pre-commit hook.
+2. Run Super Linter on GitHub runner.
+3. Create GCE instance using Terraform.
+4. Copy runner SSH keys to GCE instance.
+5. Setup the VM using Ansible playbook.
+6. Deploy website using Ansible playbook.
 
 ## Resources
 Google Compute Engine GitHub Actions example
