@@ -35,7 +35,7 @@
       setype: httpd_sys_rw_content_t
       state: present
     register: httpd_sefcontext
-    when: json_database.changed
+    when: json_database.changed and ansible_distribution == 'Fedora'
 
   - name: Apply new SELinux file context to filesystem on machines running Fedora
     ansible.builtin.command: restorecon -irv /var/www/html/
