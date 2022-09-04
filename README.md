@@ -7,7 +7,7 @@ Simple TODO application written in PHP hosted on Google Cloud Compute Engine.
 ### Infrastructure
 * Google Cloud Compute Engine
 * Google Cloud Operations
-* DNS hosted on https://www.noip.com/
+* DNS hosted on <https://www.noip.com//>
 ### CI/CD
 * GitHub Actions
 * Ansible
