@@ -7,8 +7,7 @@ Site available at <http://gro4t-todoapp.ddns.net/>
 * PHP, HTML, CSS
 ### Infrastructure
 * Google Cloud Compute Engine
-* Google Cloud Operations
-* DNS hosted on <https://www.noip.com//>
+* domain registered at <https://www.noip.com//>
 ### CI/CD
 * GitHub Actions
 * Ansible
