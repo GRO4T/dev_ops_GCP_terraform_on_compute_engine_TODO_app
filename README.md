@@ -1,6 +1,6 @@
 # TODO List
 Simple TODO application written in PHP hosted on Google Cloud Compute Engine. <br>
-Site available at <http://todolist.hopto.org/>
+Site available at <http://gro4t-todoapp.ddns.net/>
 
 ## Tech Stack
 ### Application
