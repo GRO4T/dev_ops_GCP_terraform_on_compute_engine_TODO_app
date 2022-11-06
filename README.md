@@ -1,13 +1,11 @@
 # TODO List
 Simple TODO application written in PHP hosted on Google Cloud Compute Engine. <br>
-Site available at <http://gro4t-todoapp.ddns.net/>
 
 ## Tech Stack
 ### Application
 * PHP, HTML, CSS
 ### Infrastructure
 * Google Cloud Compute Engine
-* domain registered at <https://www.noip.com//>
 ### CI/CD
 * GitHub Actions
 * Ansible
