@@ -1,5 +1,6 @@
 # TODO List
 Simple TODO application written in PHP hosted on Google Cloud Compute Engine. <br>
+![](docs/todo_list.png)
 
 ## Tech Stack
 ### Application
