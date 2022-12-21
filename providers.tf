@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "sandbox-351818-tf-state"
+    bucket = var.gcp_project_id + "-tf-state"
     prefix = "terraform/state"
   }
 
@@ -13,6 +13,6 @@ terraform {
 }
 
 provider "google" {
-  project = "sandbox-351818"
-  region  = "us-central1"
+  project = var.gcp_project_id
+  region  = var.gcp_region
 }

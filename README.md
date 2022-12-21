@@ -2,6 +2,11 @@
 Simple TODO application written in PHP hosted on Google Cloud Compute Engine. <br>
 ![](docs/todo_list.png)
 
+## Project set up
+1. Create service account and generate JSON key (see docs/dev_notes.md);
+2. Create Cloud Storage bucket named <gcp_project_id>-tf-state;
+3. Manually run GitHub Action or commit something;
+
 ## Tech Stack
 ### Application
 * PHP, HTML, CSS

@@ -1,7 +1,7 @@
 resource "google_compute_instance" "todo-list-vm" {
   name         = "todo-list-instance"
   machine_type = "e2-micro"
-  zone         = "us-central1-a"
+  zone         = var.gcp_zone
 
   tags = ["http-server"]
 
