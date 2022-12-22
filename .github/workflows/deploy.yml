@@ -9,7 +9,7 @@ on:
       - completed
 
 env:
-  PROJECT_ID: sandbox-351818
+  PROJECT_ID: '${{ secrets.GCP_PROJECT_ID }}'
   GCE_INSTANCE: todo-list-instance
   GCE_INSTANCE_ZONE: us-central1-a
 
@@ -47,6 +47,6 @@ jobs:
       working-directory: ./ansible
       run: ansible-playbook vm_setup.yml -e apache_server=remote_gcp_debian_vm
 
-    - name: Deploy solotion using ansible 
+    - name: Deploy solution using ansible 
       working-directory: ./ansible
       run: ansible-playbook deploy_website.yml -e apache_server=remote_gcp_debian_vm
