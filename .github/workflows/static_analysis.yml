@@ -9,6 +9,9 @@ on:
 
 jobs:
   build:
+    # Allow to skip this workflow by adding [nolint] tag to commit message
+    if: "!contains(github.event.commits[0].message, '[nolint]')"
+
     name: Lint code base with Super Linter
     runs-on: ubuntu-latest
 
