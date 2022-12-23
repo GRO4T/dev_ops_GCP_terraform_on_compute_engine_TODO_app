@@ -30,3 +30,11 @@ jobs:
           VALIDATE_ANSIBLE: false
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # [WORKAROUND] This job only purpose is to ensure that workflow does not fall into skipped status,
+  # when [nolint] tag is specified. Otherwise subsequent workflows would not run.
+  dummy_job:
+    steps:
+      - name: Dummy job
+        run: echo "Dummy job completed"
+        shell: bash
