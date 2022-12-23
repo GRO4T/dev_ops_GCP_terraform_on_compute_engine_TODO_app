@@ -34,6 +34,9 @@ jobs:
   # [WORKAROUND] This job only purpose is to ensure that workflow does not fall into skipped status,
   # when [nolint] tag is specified. Otherwise subsequent workflows would not run.
   dummy_job:
+    name: Dummy job to ensure that 'completed' event is generated.
+    runs-on: ubuntu-latest
+
     steps:
       - name: Dummy job
         run: echo "Dummy job completed"
