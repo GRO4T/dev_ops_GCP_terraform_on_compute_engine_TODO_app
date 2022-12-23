@@ -41,7 +41,7 @@ jobs:
       run: gcloud compute config-ssh
 
     - name: Verify SSH host
-      run: ssh -o StrictHostKeyChecking=no todo-list-instance.us-central1-a.sandbox-351818 "echo 'Verify host'"
+      run: ssh -o StrictHostKeyChecking=no ${GCE_INSTANCE}.${GCE_INSTANCE_ZONE}.${PROJECT_ID} "echo 'Verify host'"
 
     - name: Setup the VM using ansible
       working-directory: ./ansible
