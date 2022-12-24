@@ -37,11 +37,11 @@
       enabled: yes
     become: yes
 
-  - name: Change permissions to '775' for /var/www/html/ directory
+  - name: Change permissions to '777' for /var/www/html/ directory
     file:
       path: /var/www/html/
       recurse: yes
-      mode: '775'
+      mode: '777'
     become: yes
 
   - name: Change httpd main index from index.html to index.php
