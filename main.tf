@@ -25,3 +25,15 @@ resource "google_compute_instance" "todo-list-vm" {
   sudo apt upgrade -y
   SCRIPT
 }
+
+resource "google_compute_firewall" "default" {
+  name    = "allow-http"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  target_tags = ["http-server"]
+}

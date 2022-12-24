@@ -53,3 +53,9 @@ Configure ssh keys
 gcloud compute config-ssh
 ```
 GCE instance hostname: [INSTANCE_NAME].[ZONE].[PROJECT_ID]
+
+## Setting up service accounts permissions
+Service account used by GitHub Actions worker should have following roles:
+* Compute Instance Admin (v1)
+* Service Account User
+* Storage Object Admin
